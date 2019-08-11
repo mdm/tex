@@ -1,5 +1,7 @@
 \documentclass{scrartcl}
 
+\usepackage{upgreek}
+
 \title{Reducibility Among Combinatorial Problems \thanks{This research was partially supported by National Science Foundation Grant GJ-474}}
 \author{Richard M. Karp \\ University of California at Berkeley}
 \date{1972}
@@ -50,13 +52,28 @@ The author also wishes to acknowledge the substantial contributions of Eugene La
 
 \section{The Class \(\mathcal{P}\)}
 
-There is a large class of important computational problems which involve the determination of properties of graphs, digraphs, integers, finite families of finite
-sets, boolean formulas and elements of other countable domains.
-It is a reasonable working hypothesis, championed originally by Jack Edmonds (1965) in connection with problems in graph theory and integer programming, and by now
-widely accepted, that such a problem can be regarded as tractable if and only if there is an algorithm for its solution whose running time is bounded by a polynomial
-in the size of the input.
-In this section we introduce and begin to investigate the class of probems solvable in polynomial time.
+There is a large class of important computational problems which involve the determination of properties of graphs, digraphs, integers, finite families
+of finite sets, boolean formulas and elements of other countable domains. It is a reasonable working hypothesis, championed originally by Jack Edmonds
+(1965) in connection with problems in graph theory and integer programming, and by now widely accepted, that such a problem can be regarded as tractable
+if and only if there is an algorithm for its solution whose running time is bounded by a polynomial in the size of the input. In this section we introduce
+and begin to investigate the class of probems solvable in polynomial time.
 
-We begin by giving an extremely general definition of ``deterministic algorithm'', computing a function from a countable domain \(D\) into a countable range \(R\).
+We begin by giving an extremely general definition of ``deterministic algorithm'', computing a function from a countable domain \(D\) into a countable range
+\(R\).
+
+For any finite alphabet \(A\), let \(A^{*}\) be the set of finite strings of elements of \(A\); for \(x \in A^{*}\), let \(\mathrm{lg}(x)\) denote the \(x\).
+
+A \emph{deterministic algorithm} \(\mathcal{A}\) is specified by:
+
+\begin{itemize}
+    \item[] a countable set \(D\) (the \emph{domain})
+    \item[] a countable set \(R\) (the \emph{range})
+    \item[] a finite alphabet \(\Delta\) such that \(\Delta^{*} \cap R = \emptyset\)
+    \item[] an \emph{encoding function} \(\mathrm{E} \colon D \to \Delta^{*}\)
+    \item[] a \emph{transition function} \(\uptau \colon \Delta^{*} \to \Delta^{*} \cup R\).
+\end{itemize}
+
+The \emph{computation} of \(\mathcal{A}\) on input \(x \in D\) is the unique sequence \(y_{1}, y_{2}, ...\) such that \(y_{1} = \mathrm{E}(x), y_{i + 1} =
+\uptau(y_{i})\) for all \(i\) and, if the sequence is finite and ends with \(y_{k}\), then \(y_{k} \in R\).
 
 \end{document}
